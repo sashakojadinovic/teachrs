@@ -26,6 +26,12 @@ h1 {
   color: #ffffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+.dialogue .dialogue-turn p.question {
+  background: #c93305;
+}
+.dialogue .dialogue-turn p.question::before {
+  border-right: 10px solid #c93305;
+}
 .dialogue .dialogue-turn p::before {
   content: "";
   position: absolute;
