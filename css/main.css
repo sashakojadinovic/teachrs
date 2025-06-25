@@ -4,10 +4,28 @@ body {
 h1 {
   font-size: 48px;
 }
+.show-after-1 {
+  animation-delay: 1s !important;
+}
+.show-after-2 {
+  animation-delay: 4s !important;
+}
+.show-after-3 {
+  animation-delay: 6s !important;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .dialogue .dialogue-turn {
   display: flex;
   align-items: center;
   margin-bottom: 1em;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
 }
 .dialogue .dialogue-turn .avatar {
   width: 100px;
@@ -17,7 +35,7 @@ h1 {
   flex-shrink: 0;
 }
 .dialogue .dialogue-turn p {
-  background: #65c9ff;
+  background: #2B6CB0;
   border-radius: 15px;
   padding: 10px 15px;
   max-width: 70%;
@@ -27,10 +45,11 @@ h1 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .dialogue .dialogue-turn p.question {
-  background: #c93305;
+  background: #F6AD55;
+  color: #000000;
 }
 .dialogue .dialogue-turn p.question::before {
-  border-right: 10px solid #c93305;
+  border-right: 10px solid #F6AD55;
 }
 .dialogue .dialogue-turn p::before {
   content: "";
@@ -41,5 +60,10 @@ h1 {
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-right: 10px solid #65c9ff;
+  border-right: 10px solid #2B6CB0;
+}
+.dialogue .dialogue-mix {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
 }
