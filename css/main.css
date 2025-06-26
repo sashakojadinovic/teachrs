@@ -9,11 +9,6 @@ body {
 body {
   border-top: 10px solid #F6AD55;
 }
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 5px;
-}
 h1 {
   font-size: 48px;
   margin-top: 0;
@@ -21,6 +16,15 @@ h1 {
 h2 {
   font-weight: 400;
   font-size: 32px;
+}
+p {
+  margin: 0.5rem;
+  line-height: 1.5rem;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 5px;
 }
 .show-after-1 {
   animation-delay: 1s !important;
