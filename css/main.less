@@ -1,6 +1,7 @@
 @color_background_light: #f7f7f7;
-@color_background_primary : #2B6CB0;
+@color_background_primary : #0a3d62;
 @color_background_secondary: #F6AD55;
+@color_background_info: #48bb78;
 @color_foreground_light: #ffffff;
 @color_foreground_dark: #000000;
 
@@ -21,6 +22,7 @@ body {
 h1 {
     font-size: 48px;
     margin-top: 0;
+    color: @color_background_primary;
 }
 
 h2 {
@@ -36,7 +38,14 @@ p {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 5px;
+    padding: 15px 5px;
+    .logo-container {
+        margin-bottom: 3rem;
+        border-bottom: 1px solid @color_background_primary;
+        img {
+            width: 200px;
+        }
+    }
 }
 
 
@@ -63,14 +72,14 @@ p {
 .dialogue-turn {
     display: flex;
     align-items: center;
-    margin-bottom: 1em;
+    margin: 1em .5em;
     opacity: 0;
     transform: translateY(10px);
     animation: fadeInUp 0.6s ease forwards;
 
     .avatar {
         width: 100px;
-        height: 100px;
+        height: auto;
         border-radius: 50%;
         margin-right: 1em;
         flex-shrink: 0;
@@ -123,6 +132,14 @@ p {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.resume {
+    .info {
+        background-color: #48bb78;
+        &:before {
+             border-right: 10px solid @color_background_info ;
+        }
+    }
+}
 .glossary {
     max-width: 700px;
     margin: 1rem;
