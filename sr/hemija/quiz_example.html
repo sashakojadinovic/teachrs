@@ -201,13 +201,36 @@
                 btn.onmouseout = () => (btn.style.background = "#fff");
 
                 btn.onclick = () => {
-                    if (ans === q.correct) score++;
-                    current++;
-                    if (current < questions.length) {
-                        showQuestion();
+                    // On click disable all buttons to prevent multiple clicks
+                    Array.from(answersDiv.children).forEach(b => b.disabled = true);
+
+                    // Mark the clicked button green or red
+                    if (ans === q.correct) {
+                        score++;
+                        btn.style.background = "#c8e6c9"; // svetlo zelena
+                        btn.style.borderColor = "#388e3c"; // tamno zelena
                     } else {
-                        showResult();
+                        btn.style.background = "#ffcdd2"; // svetlo crvena
+                        btn.style.borderColor = "#d32f2f"; // tamno crvena
+
+                        // Opcionalno: označi tačan odgovor
+                        Array.from(answersDiv.children).forEach(b => {
+                            if (b.textContent === q.correct) {
+                                b.style.background = "#c8e6c9";
+                                b.style.borderColor = "#388e3c";
+                            }
+                        });
                     }
+
+                    // Nakon 1.2 sekundi ide na sledeće pitanje ili rezultat
+                    setTimeout(() => {
+                        current++;
+                        if (current < questions.length) {
+                            showQuestion();
+                        } else {
+                            showResult();
+                        }
+                    }, 1200);
                 };
                 answersDiv.appendChild(btn);
             });
@@ -230,8 +253,8 @@
                 reviewLink.onclick = (e) => {
                     e.preventDefault();
                     resetQuiz();
-                    //window.location.href = "#"; // može i 
                     window.scrollTo({ top: 0, behavior: "smooth" });
+
                 };
             }
         }
@@ -246,6 +269,7 @@
         }
 
         showQuestion();
+
     </script>
 
 </body>
