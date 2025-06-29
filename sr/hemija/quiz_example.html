@@ -22,13 +22,13 @@
                 <div class="dialogue-turn show-after-1" data-speaker="Sara">
                     <img src="../../images/avatars/sara.svg" width="100" height="106" alt="Avatar Sare"
                         class="avatar" />
-                    <p class="question">Ćao, Marko, ima li hemije među nama?</p>
+                    <p class="bubble question">Ćao, Marko, ima li hemije među nama?</p>
                 </div>
 
                 <div class="dialogue-turn show-after-2" data-speaker="Marko">
                     <img src="../../images/avatars/marko.svg" width="100" height="106" alt="Avatar Marka"
                         class="avatar" />
-                    <p class="answer">Ćao, Saro. Pa, hemija je svuda. I u nama i oko nas.</p>
+                    <p class="bubble answer">Ćao, Saro. Pa, hemija je svuda. I u nama i oko nas.</p>
                 </div>
                 <div class="dialogue-mix show-after-3" data-speaker="Marko i Sara">
                     <p>
@@ -95,7 +95,7 @@
                 <div class="dialogue-turn show-after-3" data-speaker="Nastavnik">
                     <img src="../../images/avatars/teacher.svg" width="100" height="106" alt="Avatar nastavnika"
                         class="avatar" />
-                    <p class="info">Hajde da zaključimo šta smo naučili.</p>
+                    <p class="bubble info">Hajde da zaključimo šta smo naučili.</p>
                 </div>
                 <div class="resume-description">
                     <dl class="glossary">
@@ -112,42 +112,23 @@
             </section>
 
             <!-- POČETAK KVIZA -->
-            <section id="quiz-section" aria-label="Kviz o hemiji" style="margin-top: 3rem;">
-                <div id="quiz-box"
-                    style="max-width: 600px; margin: 2rem auto; font-family: sans-serif; border: 1px solid #ccc; border-radius: 12px; padding: 1.5rem; background: #f9fbff;">
-                    <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                        <img src="../../images/avatars/teacher.svg" alt="Avatar nastavnika" width="80"
-                            style="border-radius: 50%;" />
-                        <div id="bubble" style="
-                background: #eef;
-                border-radius: 1rem;
-                padding: 1rem 1.2rem;
-                max-width: 400px;
-                position: relative;
-                font-family: sans-serif;
-                box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-              ">
-                            <p id="question-text" style="margin: 0; font-size: 1.1rem; font-weight: 600;">...</p>
-                            <div style="
-                  position: absolute;
-                  top: 20px;
-                  left: -10px;
-                  width: 0;
-                  height: 0;
-                  border: 10px solid transparent;
-                  border-right-color: #eef;
-                "></div>
-                        </div>
+            <section id="quiz-section" aria-label="Kviz o hemiji i supstanci">
+                <div id="quiz-box">
+                    <div id="quiz-question">
+                        <img src="../../images/avatars/teacher.svg" alt="Avatar nastavnika" width="100" height="106" />
+
+                        <p id="question-text" class="bubble info">...</p>
+                        <div></div>
                     </div>
 
-                    <div id="answers" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div id="answers">
                     </div>
 
                     <div id="result" style="display: none; margin-top: 1rem; font-size: 1.1rem; text-align: center;"
                         role="alert" aria-live="polite">
                         <p id="feedback" style="font-weight: bold;"></p>
                         <a href="#" id="review-link"
-                            style="display: none; color: #007bff; cursor: pointer; text-decoration: underline;">🔁
+                            style="display: none; color: #007bff; cursor: pointer; text-decoration: underline;">
                             Klikni ovde da ponovo pročitaš lekciju</a>
                     </div>
                 </div>
@@ -155,122 +136,7 @@
             <!-- KRAJ KVIZA -->
         </article>
     </div>
-
-    <script>
-        const questions = [
-            {
-                text: "Koji je hemijski simbol za vodonik?",
-                answers: ["H", "He", "O"],
-                correct: "H",
-            },
-            {
-                text: "Koliko protona ima atom ugljenika (C)?",
-                answers: ["6", "12", "8"],
-                correct: "6",
-            },
-            {
-                text: "Koji element koristimo za pravljenje stakla?",
-                answers: ["Natrijum", "Silicijum", "Hlor"],
-                correct: "Silicijum",
-            },
-        ];
-
-        let current = 0;
-        let score = 0;
-
-        const questionText = document.getElementById("question-text");
-        const answersDiv = document.getElementById("answers");
-        const resultDiv = document.getElementById("result");
-        const feedback = document.getElementById("feedback");
-        const reviewLink = document.getElementById("review-link");
-
-        function showQuestion() {
-            const q = questions[current];
-            questionText.textContent = q.text;
-            answersDiv.innerHTML = "";
-
-            q.answers.forEach((ans) => {
-                const btn = document.createElement("button");
-                btn.textContent = ans;
-                btn.style.padding = "0.5rem 1rem";
-                btn.style.border = "1px solid #ccc";
-                btn.style.borderRadius = "8px";
-                btn.style.background = "#fff";
-                btn.style.cursor = "pointer";
-                btn.onmouseover = () => (btn.style.background = "#eef");
-                btn.onmouseout = () => (btn.style.background = "#fff");
-
-                btn.onclick = () => {
-                    // On click disable all buttons to prevent multiple clicks
-                    Array.from(answersDiv.children).forEach(b => b.disabled = true);
-
-                    // Mark the clicked button green or red
-                    if (ans === q.correct) {
-                        score++;
-                        btn.style.background = "#c8e6c9"; // svetlo zelena
-                        btn.style.borderColor = "#388e3c"; // tamno zelena
-                    } else {
-                        btn.style.background = "#ffcdd2"; // svetlo crvena
-                        btn.style.borderColor = "#d32f2f"; // tamno crvena
-
-                        // Opcionalno: označi tačan odgovor
-                        Array.from(answersDiv.children).forEach(b => {
-                            if (b.textContent === q.correct) {
-                                b.style.background = "#c8e6c9";
-                                b.style.borderColor = "#388e3c";
-                            }
-                        });
-                    }
-
-                    // Nakon 1.2 sekundi ide na sledeće pitanje ili rezultat
-                    setTimeout(() => {
-                        current++;
-                        if (current < questions.length) {
-                            showQuestion();
-                        } else {
-                            showResult();
-                        }
-                    }, 1200);
-                };
-                answersDiv.appendChild(btn);
-            });
-        }
-
-        function showResult() {
-            questionText.textContent =
-                "Gotovo! Tvoj rezultat je: " + score + " od " + questions.length + ".";
-            answersDiv.innerHTML = "";
-            resultDiv.style.display = "block";
-
-            const successRatio = score / questions.length;
-
-            if (successRatio >= 0.66) {
-                feedback.textContent = "Odlično! Savladao si gradivo.";
-                reviewLink.style.display = "none";
-            } else {
-                feedback.textContent = "Izgleda da ti treba još malo vežbe.";
-                reviewLink.style.display = "inline";
-                reviewLink.onclick = (e) => {
-                    e.preventDefault();
-                    resetQuiz();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-
-                };
-            }
-        }
-
-        function resetQuiz() {
-            current = 0;
-            score = 0;
-            resultDiv.style.display = "none";
-            reviewLink.style.display = "none";
-            feedback.textContent = "";
-            showQuestion();
-        }
-
-        showQuestion();
-
-    </script>
+    <script src="../../javascript/quiz.js"></script>
 
 </body>
 

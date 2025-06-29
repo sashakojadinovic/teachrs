@@ -1,0 +1,17 @@
+#quiz-section {
+  margin-top: 3rem;
+}
+#quiz-section #quiz-box {
+  max-width: 600px;
+  margin: 2rem auto;
+  font-family: sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #f9fbff;
+}
+#quiz-section #quiz-box #quiz-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
