@@ -31,19 +31,19 @@
                     <p class="answer">Hi Sara. Chemistry is everywhere—inside us, and all around us.</p>
                 </div>
 
-                <div class="dialogue-mix show-after-3" data-speaker="Marko and Sara">
+                <div class="dialogue-mix show-after-3" data-speaker="Mark and Sara">
 
                     <p><strong>Sara: </strong>That’s not exactly what I meant, but go on. I love listening to you talk.
                         😊</p>
                     <p><strong>Mark: </strong>Then listen closely. Chemistry is a wonderful science.</p>
                     <p><strong>Sara: </strong>And what does this wonderful science actually study? I’d love for the
                         object of my admiration to explain the object of his favorite science. 😊</p>
-                    <p><strong>Marko: </strong>Chemistry studies matter, so we can say that the main focus of chemistry
+                    <p><strong>Mark: </strong>Chemistry studies matter, so we can say that the main focus of chemistry
                         is matter itself.</p>
                     <p><strong>Sara: </strong>And what exactly is matter?</p>
                     <p><strong>Mark: </strong>Matter is anything that has mass and takes up space. There are so many
                         examples that I’m actually struggling to think of something that isn’t made of matter.</p>
-                    <p><strong>Sara: </strong>What about love, Marko? Love doesn’t have mass or take up space...
+                    <p><strong>Sara: </strong>What about love, Mark? Love doesn’t have mass or take up space...
                         although it does feel like butterflies are filling my stomach right now.</p>
                     <p><strong>Mark: </strong>You’re right. Love is an emotion—it’s not matter. But everything around
                         us, including ourselves, is made of matter.</p>
@@ -79,6 +79,42 @@
                     </dl>
                 </div>
             </section>
+             <section id="quiz-section" aria-label="Quiz about chemistry and matter">
+                <div id="quiz-box">
+                    <div id="quiz-question">
+                        <img src="../../images/avatars/teacher.svg" alt="Teacher's avatar" width="100" height="106" />
+
+                        <p id="question-text" class="bubble info">...</p>
+                    </div>
+
+                    <div id="answers">
+                    </div>
+
+                    <div id="result" style="display: none; margin-top: 1rem; font-size: 1.1rem; text-align: center;"
+                        role="alert" aria-live="polite">
+                        <p id="feedback" style="font-weight: bold;"></p>
+                        <button id="review-link">Review the lesson</button>
+                    </div>
+                </div>
+            </section>
+            <script>
+            const questions = [
+            {
+                text: "What is chemistry mainly concerned with?",
+                answers: ["Emotions and human behavior", "Substance and the changes it undergoes", "The movement of planets", "Numbers and calculations"],
+                correct: 1,
+            },
+            {
+                text: "Which of the following is NOT considered a substance?",
+                answers: ["Water", "Aluminum", "Plastic", "Love"],
+                correct: 3,
+            }
+
+            ];
+            </script>
+            <script src="/javascript/quiz.js"></script>
+           
+
 
 
 
