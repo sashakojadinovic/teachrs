@@ -16,12 +16,7 @@ function showQuestion() {
     q.answers.forEach((ans, index) => {
         const btn = document.createElement("button");
         btn.textContent = ans;
-        btn.style.padding = "0.5rem 1rem";
-        btn.style.border = "1px solid #ccc";
-        btn.style.borderRadius = "8px";
-        btn.style.background = "#fff";
-        btn.style.cursor = "pointer";
-        btn.onmouseover = () => (btn.style.background = "#eef");
+        btn.onmouseover = () => (btn.style.background = "#eee");
         btn.onmouseout = () => (btn.style.background = "#fff");
 
         btn.onclick = () => {
